@@ -6,7 +6,7 @@ pipeline {
         SONAR_TOKEN = credentials('sonar-token') // SonarQube credential ID in Jenkins
         HADOOP_CLUSTER = 'mycluster'
         REGION = 'us-central1'
-        BUCKET_NAME = '14848_vlian'
+        BUCKET_NAME = '14848_QianhuiL1'
         GOOGLE_APPLICATION_CREDENTIALS = '/tmp/credential.json'
     }
 
@@ -67,7 +67,7 @@ pipeline {
                 script {
                     sh '''
                     gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}
-                    gcloud config set project sodium-primer-435520-e6
+                    gcloud config set project course-project-436720
                     gcloud config set compute/region ${REGION}
                     '''
                 }

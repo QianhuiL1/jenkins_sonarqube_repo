@@ -6,7 +6,7 @@ pipeline {
         SONAR_TOKEN = credentials('sonar-token') // SonarQube credential ID in Jenkins
         HADOOP_CLUSTER = 'mycluster'
         REGION = 'us-central1'
-        BUCKET_NAME = '14848_QianhuiL1'
+        BUCKET_NAME = '14848_qianhuiL1'
         GOOGLE_APPLICATION_CREDENTIALS = '/tmp/credential.json'
     }
 

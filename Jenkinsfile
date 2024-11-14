@@ -6,37 +6,27 @@ pipeline {
         SONAR_TOKEN = credentials('sonar-token') // SonarQube credential ID in Jenkins
         HADOOP_CLUSTER = 'mycluster'
         REGION = 'us-central1'
-        BUCKET_NAME = '14848_qianhuil1'
+        BUCKET_NAME = '14848_QianhuiL1'
         GOOGLE_APPLICATION_CREDENTIALS = '/tmp/credential.json'
     }
 
     stages {
-        stage('Checkout') {
+        stage('Pull') {
             steps {
                 git branch: 'main', url: 'https://github.com/QianhuiL1/jenkins_sonarqube_repo.git'
             }
         }
         
-        stage('Build') {
-            steps {
-                script {
-                    // compile
-                    sh 'mvn clean compile'
-                }
-            }
-        }
-
         stage('SonarQube Analysis') {
             steps {
                 script {
                     withSonarQubeEnv('sonarqube') { 
-                    // Run SonarQube analysis using the SonarQube Scanner
                         sh """
                         export PATH=$PATH:/opt/sonar-scanner/bin
                         sonar-scanner \
                             -Dsonar.projectKey=my_project \
-                            -Dsonar.sources=. \
-                            -Dsonar.java.binaries=target/classes \
+                            -Dsonar.sources=mapper.py,reducer.py \
+                            -Dsonar.language=py \
                             -Dsonar.login=${SONAR_TOKEN}
                         """
                     }

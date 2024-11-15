@@ -2,12 +2,12 @@ pipeline {
     agent any
 
     environment {
-        HADOOP_CLUSTER = 'mycluster'
+        HADOOP_CLUSTER = 'hadoop-cluster'
         REGION = 'us-central1'
         BUCKET_NAME = '14848_qianhuil1'
         GOOGLE_APPLICATION_CREDENTIALS = '/tmp/credential.json'
         SONAR_SCANNER_HOME = '/opt/sonar-scanner'
-        SONARQUBE_URL = 'http://34.172.20.95:9000'
+        SONARQUBE_URL = 'http://localhost:9000'
         SONAR_USER = 'admin'
         SONAR_PASSWORD = 'Course14848-'
         PATH = "${env.PATH}:${env.SONAR_SCANNER_HOME}/bin"
